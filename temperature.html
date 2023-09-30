@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Temperature Converter App</title>
+
+    <style>
+        body {
+            background-color: teal;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Set the height of the body to 100% of the viewport height */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .temperature-converter {
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Almyra', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .result-heading {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .result-box {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .result-value {
+            font-size: 2rem;
+        }
+
+        .degree-field,
+        .temp-field {
+            margin: 10px 0;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button#convert-btn {
+            background-color: teal;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="temperature-converter">
+            <h1 class="title">Temperature Converter</h1>
+            <div class="result">
+                <span class="result-heading">Result (Fahrenheit)</span>
+                <div class="result-box">
+                    <h2 class="result-value" id="result"></h2>
+                </div>
+            </div>
+            <div class="degree-type">
+                <div class="degree-field">
+                    <label for="degree">Degrees Celsius</label>
+                    <input type="number" name="degree" id="degree">
+                </div>
+            </div>
+            <button id="convert-btn">Convert</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to perform temperature conversion
+        function convertTemperature() {
+            // Get the input value in Celsius
+            const degreeCelsius = parseFloat(document.getElementById("degree").value);
+
+            // Perform the conversion to Fahrenheit
+            const degreeFahrenheit = (degreeCelsius * 9/5) + 32;
+
+            // Display the result inside the result box
+            document.getElementById("result").textContent = degreeFahrenheit.toFixed(2) + " °F";
+        }
+
+        // Add an event listener to the "Convert" button
+        document.getElementById("convert-btn").addEventListener("click", convertTemperature);
+    </script>
+</body>
+</html>
